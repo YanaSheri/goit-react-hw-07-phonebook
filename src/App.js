@@ -30,6 +30,28 @@ class App extends Component {
     filter: "",
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(prevProps);
+    // console.log(prevState);
+    if (prevState.contacts !== this.state.contacts) {
+      console.log("ok");
+      localStorage.setItem(
+        "key",
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
+
+  componentDidMount() {
+
+    const keyContact = localStorage.getItem("key");
+    console.log(keyContact);
+    const contactParse = JSON.parse(keyContact);
+    if (contactParse) {
+      this.setState({ contacts: contactParse });
+    }
+  }
+
   handleFilter = (e) => {
     const value = e.currentTarget.value;
     this.setState({
