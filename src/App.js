@@ -45,9 +45,9 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem(
       "key",
-      JSON.stringify(contacts)
+      JSON.stringify(contactsArr)
     );
-  });
+  }, [contactsArr]);
 
   const handleFilter = (e) => {
     const value = e.currentTarget.value;
@@ -75,25 +75,24 @@ const App = () => {
       ),
     );
 
-    return (
-      <>
-        <h2>Phonebook</h2>
-        <ContactForm
-          stateChange={stateChange}
-        />
-        <h2>Contacts</h2>
-        <Filter
-          filter={filter}
-          handleFilter={handleFilter}
-        />
-        <ContactList
-          contacts={contacts}
-          filter={filter}
-          deleteListItem={deleteListItem}
-        />
-      </>
-    );
-  
+  return (
+    <>
+      <h2>Phonebook</h2>
+      <ContactForm
+        stateChange={stateChange}
+      />
+      <h2>Contacts</h2>
+      <Filter
+        filter={filter}
+        handleFilter={handleFilter}
+      />
+      <ContactList
+        contacts={contacts}
+        filter={filter}
+        deleteListItem={deleteListItem}
+      />
+    </>
+  );
 }
 
 export default App;
