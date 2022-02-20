@@ -1,8 +1,8 @@
 import ContactListItem from "../ContactListItem/ContactListItem";
 import PropTypes from "prop-types";
 
-const ContactList = ({contacts, filter, deleteListItem}) => {
-    return (<ul><ContactListItem contacts={contacts} filter={filter} deleteListItem={ deleteListItem}/></ul> );
+const ContactList = () => {
+    return (<ul><ContactListItem /></ul> );
 }
 
 ContactList.propTypes = {

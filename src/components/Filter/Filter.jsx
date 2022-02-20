@@ -1,11 +1,17 @@
 import PropTypes from "prop-types";
+import {handleFilter} from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Filter = ({ filter, handleFilter }) => {
+
+
+const Filter = () => {
+    const filter = useSelector(state => state.contacts.filter);
+    const dispatch = useDispatch();
     return <label>
         Find contacts by name
         <input
             type="text"
-            onChange={handleFilter}
+            onChange={(e) => dispatch(handleFilter(e.currentTarget.value))}
             value={filter}
         />
     </label>

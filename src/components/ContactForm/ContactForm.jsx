@@ -1,10 +1,14 @@
 // import { Component } from "react";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import {stateChange} from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
-const ContactForm = ({stateChange}) => {
+const ContactForm = () => {
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
+    const contacts = useSelector(state => state.contacts.items);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -32,9 +36,33 @@ const ContactForm = ({stateChange}) => {
             id: nanoid(),
             number: number,
         };
-        stateChange(newContact);
+        if (contacts
+      .map((contact) => contact.name)
+      .includes(newContact.name)) {
+      alert(
+        `${newContact.name} is already in contacts.`
+      );
+      return;
+        }
+        dispatch(stateChange(newContact));
+        // stateChange(newContact);
         resetForm();
     };
+
+     // const stateChange = (newContact) => {
+  //   const searchName = contacts
+  //     .map((contact) => contact.name)
+  //     .includes(newContact.name);
+
+  //   if (searchName) {
+  //     alert(
+  //       `${newContact.name} is already in contacts.`
+  //     );
+  //     return;
+  //   }
+
+  //   setContacts([...contacts, newContact]);
+  // };
 
     return  <form onSubmit={handleSubmit}>
         <label>
