@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteListItem } from '../../redux/actions';
+import { removeContact } from '../../redux/contactOperations';
 
 const ContactListItem = () => {
     const contacts = useSelector(state => state.contacts.items);
@@ -13,7 +13,7 @@ const ContactListItem = () => {
           .includes(filter.toLowerCase()) && (
           <li key={contact.id}>
                 {contact.name}: {contact.number} 
-                <button onClick={() => dispatch(deleteListItem(contact.id))}>Delete</button>
+                <button onClick={() => dispatch(removeContact(contact.id))}>Delete</button>
           </li>
         )
     ) );

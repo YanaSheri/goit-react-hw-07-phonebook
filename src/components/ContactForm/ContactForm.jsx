@@ -1,7 +1,7 @@
 // import { Component } from "react";
 import { useState } from "react";
-import { nanoid } from "nanoid";
-import {stateChange} from '../../redux/actions';
+// import { nanoid } from "nanoid";
+import {addContact} from '../../redux/contactOperations';
 import { useSelector, useDispatch } from 'react-redux';
 
 const ContactForm = () => {
@@ -33,7 +33,6 @@ const ContactForm = () => {
         e.preventDefault();
         const newContact = {
             name: name,
-            id: nanoid(),
             number: number,
         };
         if (contacts
@@ -44,7 +43,7 @@ const ContactForm = () => {
       );
       return;
         }
-        dispatch(stateChange(newContact));
+        dispatch(addContact(newContact));
         // stateChange(newContact);
         resetForm();
     };
