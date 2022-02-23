@@ -4,13 +4,13 @@ import Filter from "./components/Filter/Filter";
 import ContactList from "./components/ContactList/ContactList";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getContactApi } from "./utils/mockApi";
+import { getContact } from "./redux/contactOperations";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContactApi());
+    dispatch(getContact());
   }, [dispatch]);
 
   return (

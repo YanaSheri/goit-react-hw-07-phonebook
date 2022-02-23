@@ -12,7 +12,7 @@ export const addContactApi = (newContact) => {
 export const getContactApi = () => {
   return axios
     .get("/contacts")
-    .then(({ data }) => console.log(data))
+    .then(({ data }) => data)
     .catch((err) => err);
 };
 
